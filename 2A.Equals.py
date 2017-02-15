@@ -3,13 +3,22 @@ t = int(input())
 for i in range(t):
     n = int(input())
     a = [int(x) for x in input().split()]
-    a = sorted(a)
     
-    min = a[0]
-    tot = 0 
+    mymin = min(a)
+    minlist = []
+    for i in range(5):
+        minlist.append(mymin - i)
     
-    for val in a:
-        diff = val - min
-        tot += diff// 5 + (diff % 5)// 2 +(diff % 5) % 2;
     
-    print(tot)
+    totlist = []
+    
+    for mymin in minlist:
+        tot = 0
+        for val in a:
+            diff = val - mymin
+            tot += (diff// 5 + (diff % 5)// 2 +(diff % 5) % 2)
+        totlist.append(tot)    
+    print(min(totlist))
+    
+    
+   
